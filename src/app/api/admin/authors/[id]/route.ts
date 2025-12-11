@@ -1,11 +1,11 @@
 import { Author } from "@/models/Author";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongoose";
 import { requireAdmin } from "@/middleware/auth";
 
 // GET /api/admin/authors/[id] - Get single author
 export async function GET(
-    req: Request,
+    req: NextRequest,
     { params }: { params: { id: string } }
 ) {
     try {
@@ -34,7 +34,7 @@ export async function GET(
 
 // PUT /api/admin/authors/[id] - Update author (admin only)
 export async function PUT(
-    req: Request,
+    req: NextRequest,
     { params }: { params: { id: string } }
 ) {
     const authResult = await requireAdmin(req);
@@ -91,7 +91,7 @@ export async function PUT(
 
 // DELETE /api/admin/authors/[id] - Delete author (admin only)
 export async function DELETE(
-    req: Request,
+    req: NextRequest,
     { params }: { params: { id: string } }
 ) {
     const authResult = await requireAdmin(req);
