@@ -14,7 +14,7 @@ const eslintConfig = [
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unusued-vars": "off"
+      "@typescript-eslint/no-unused-vars": "off"
     },
     ignores: [
       "node_modules/**",
