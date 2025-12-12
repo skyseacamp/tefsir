@@ -18,12 +18,12 @@ export async function GET(req: Request) {
         const skip = (page - 1) * limit;
 
         const [presentations, total] = await Promise.all([
-            Tefsir.find({ createdBy: authResult.id })
+            Tefsir.find({ createdBy: authResult?.id })
                 .skip(skip)
                 .limit(limit)
                 .sort({ createdAt: -1 })
                 .lean(),
-            Tefsir.countDocuments({ createdBy: authResult.id })
+            Tefsir.countDocuments({ createdBy: authResult?.id })
         ]);
 
         return NextResponse.json({
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
             ayetNo,
             arapca,
             aciklama,
-            createdBy: authResult.id
+            createdBy: authResult?.id
         });
 
         return NextResponse.json(presentation, { status: 201 });
