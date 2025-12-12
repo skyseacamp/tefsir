@@ -3,6 +3,13 @@
 import { apiClient } from "@/lib/api";
 import React, { useState } from "react";
 
+interface BookResponse {
+  book: {
+    name: string;
+    author: string;
+  };
+}
+
 const AddBook: React.FC = () => {
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
@@ -16,12 +23,12 @@ const AddBook: React.FC = () => {
 
     try {
       // /api/books endpoint'ine POST isteği atıyoruz
-      const response = await apiClient.request("/books", {
+      const response = await apiClient.request<BookResponse>("/books", {
         method: "POST",
         body: JSON.stringify({ name, author }),
       });
 
-      setMessage(`✅ Kitap eklendi: ${response.book?.name || name}`);
+      setMessage(`✅ Kitap eklendi: ${response.book.name}`);
       setName("");
       setAuthor("");
     } catch (error: any) {
