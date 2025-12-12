@@ -6,7 +6,7 @@ import { requireAdmin } from "@/middleware/auth";
 // GET /api/admin/authors/[id] - Get single author
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: any
 ) {
   try {
     await connectDB();
