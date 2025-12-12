@@ -6,7 +6,7 @@ import { requireAuth } from "@/middleware/auth";
 // GET /api/user-presentations/[id] - Get single presentation
 export async function GET(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAuth(req);
     if (authResult instanceof NextResponse) return authResult;
@@ -39,7 +39,7 @@ export async function GET(
 // PUT /api/user-presentations/[id] - Update presentation (owner only)
 export async function PUT(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAuth(req);
     if (authResult instanceof NextResponse) return authResult;
@@ -85,7 +85,7 @@ export async function PUT(
 // DELETE /api/user-presentations/[id] - Delete presentation (owner only)
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAuth(req);
     if (authResult instanceof NextResponse) return authResult;

@@ -6,7 +6,7 @@ import { requireAdmin } from "@/middleware/auth";
 // GET /api/admin/books/[id] - Get single book
 export async function GET(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     try {
         await connectDB();
@@ -36,7 +36,7 @@ export async function GET(
 // PUT /api/admin/books/[id] - Update book (admin only)
 export async function PUT(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAdmin(req);
     if (authResult instanceof NextResponse) return authResult;
@@ -93,7 +93,7 @@ export async function PUT(
 // DELETE /api/admin/books/[id] - Delete book (admin only)
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAdmin(req);
     if (authResult instanceof NextResponse) return authResult;

@@ -6,7 +6,7 @@ import { requireAdmin } from "@/middleware/auth";
 // GET /api/admin/ayets/[id] - Get single ayet
 export async function GET(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     try {
         await connectDB();
@@ -35,7 +35,7 @@ export async function GET(
 // PUT /api/admin/ayets/[id] - Update ayet (admin only)
 export async function PUT(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAdmin(req);
     if (authResult instanceof NextResponse) return authResult;
@@ -93,7 +93,7 @@ export async function PUT(
 // DELETE /api/admin/ayets/[id] - Delete ayet (admin only)
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: any
 ) {
     const authResult = await requireAdmin(req);
     if (authResult instanceof NextResponse) return authResult;
