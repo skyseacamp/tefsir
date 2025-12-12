@@ -16,7 +16,7 @@ export async function GET(
 
         const presentation = await Tefsir.findOne({
             _id: params.id,
-            createdBy: authResult.id
+            createdBy: authResult?.id
         }).lean();
 
         if (!presentation) {
@@ -60,7 +60,7 @@ export async function PUT(
 
         // Find and update only if user is the owner
         const presentation = await Tefsir.findOneAndUpdate(
-            { _id: params.id, createdBy: authResult.id },
+            { _id: params.id, createdBy: authResult?.id },
             { kitap, mufessir, sure, ayetNo, arapca, aciklama },
             { new: true, runValidators: true }
         );
@@ -96,7 +96,7 @@ export async function DELETE(
         // Find and delete only if user is the owner
         const presentation = await Tefsir.findOneAndDelete({
             _id: params.id,
-            createdBy: authResult.id
+            createdBy: authResult?.id
         });
 
         if (!presentation) {
