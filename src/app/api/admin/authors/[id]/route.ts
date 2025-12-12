@@ -32,7 +32,7 @@ export async function GET(
 // PUT /api/admin/authors/[id] - Update author (admin only)
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: any
 ) {
   const authResult = await requireAdmin(req);
   if (authResult instanceof NextResponse) return authResult;
@@ -86,7 +86,7 @@ export async function PUT(
 // DELETE /api/admin/authors/[id] - Delete author (admin only)
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: any
 ) {
   const authResult = await requireAdmin(req);
   if (authResult instanceof NextResponse) return authResult;
